@@ -1,10 +1,5 @@
 <?php
 
-/**
- * Copyright MediaCT. All rights reserved.
- * https://www.mediact.nl
- */
-
 declare(strict_types=1);
 
 namespace BPerevyazko\ProductLabel\ViewModel;
@@ -21,7 +16,7 @@ class ProductData implements ArgumentInterface
     {
         $this->labelProvider = $labelProvider;
     }
-    public function getProductLabels(ProductInterface $product): ?string
+    public function getProductLabels(ProductInterface $product): array
     {
         return $this->labelProvider->get($product);
     }
