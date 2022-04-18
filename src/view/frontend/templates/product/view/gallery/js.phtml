@@ -1,0 +1,17 @@
+<?php
+/**
+ * @var Attributes $block
+ */
+
+use BPerevyazko\ProductLabel\ViewModel\ProductData;
+use Magento\Catalog\Block\Product\View\Attributes;
+
+?>
+<?php
+/** @var ProductData $viewModel */
+$viewModel = $block->getData('view_model');
+$labels = $viewModel->getProductLabels($block->getProduct());
+?>
+<div class="product-label" data-mage-init='{"productLabel":{}}'>
+2121212121
+</div>
