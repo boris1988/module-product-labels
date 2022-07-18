@@ -1,16 +1,10 @@
 <?xml version="1.0"?>
-<!--
-/**
- * Copyright © MediaCT. All rights reserved.
- * https://www.mediact.nl
- */
--->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="product.info.media">
             <block class="Magento\Catalog\Block\Product\View\Attributes" name="product.info.media.js-label"
                    template="BPerevyazko_ProductLabel::product/view/gallery/js.phtml"
-                   ifconfig="catalog/productLabel/discount"
+                   ifconfig="catalog/product_label/discount_enabled" before="-"
             >
                 <arguments>
                     <argument name="view_model" xsi:type="object">BPerevyazko\ProductLabel\ViewModel\ProductData</argument>

@@ -1,0 +1,42 @@
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .product.media, .bundle.items {
+        position: relative;
+
+        div[data-container=options] {
+            > div {
+                display: flex;
+                flex-direction: row;
+
+                .product-labels {
+                    right: 0;
+                }
+            }
+        }
+
+        .product-labels {
+            position: absolute;
+            z-index: 3;
+            border-radius: 2px;
+            font-size: 16px;
+            font-weight: bold;
+
+            .product-promotion {
+                font-weight: 'bold';
+                min-height: 24px;
+
+                .promotion-label {
+                    > span {
+                        display: block;
+                        padding: 0px 6px;
+                        color: whitesmoke;
+                        background-color: red;
+                    }
+                }
+            }
+        }
+    }
+}

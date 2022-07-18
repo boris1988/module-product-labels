@@ -7,4 +7,14 @@
             </argument>
         </arguments>
     </type>
+
+    <type name="Magento\ConfigurableProduct\Block\Product\View\Type\Configurable">
+        <plugin name="bperevyazko_product_label_configurable_config"
+                type="BPerevyazko\ProductLabel\Plugin\ConfigurableProduct\Block\Product\View\Type\ConfigurablePlugin" sortOrder="10" />
+    </type>
+
+    <type name="Magento\Bundle\Block\Catalog\Product\View\Type\Bundle">
+        <plugin name="bperevyazko_product_label_bundle_config"
+                type="BPerevyazko\ProductLabel\Plugin\Bundle\Block\Catalog\Product\View\Type\BundlePlugin" sortOrder="10" />
+    </type>
 </config>

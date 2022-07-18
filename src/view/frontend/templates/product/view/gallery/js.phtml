@@ -2,16 +2,16 @@
 /**
  * @var Attributes $block
  */
+/** @var $escaper \Magento\Framework\Escaper */
 
 use BPerevyazko\ProductLabel\ViewModel\ProductData;
 use Magento\Catalog\Block\Product\View\Attributes;
-
 ?>
 <?php
 /** @var ProductData $viewModel */
 $viewModel = $block->getData('view_model');
-$labels = $viewModel->getProductLabels($block->getProduct());
+$jsonData = $viewModel->getProductLabels($block->getProduct());
 ?>
-<div class="product-label" data-mage-init='{"productLabel":{}}'>
-2121212121
+<div class="product-labels" data-mage-init='{"productLabel":<?= /* @noEscape */ $jsonData ?>}'>
+
 </div>
