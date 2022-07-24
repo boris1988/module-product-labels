@@ -13,7 +13,10 @@ define([
             },
             _init: function () {
                 this._super();
-                renderer.init(this.options.jsonConfig.label_config.position);
+                renderer.init(
+                    this.options.jsonConfig.label_config.position,
+                    this.options.jsonConfig.label_config.background_color
+                );
             },
 
             _UpdatePrice: function () {

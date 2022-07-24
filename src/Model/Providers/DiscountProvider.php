@@ -10,6 +10,9 @@ use Magento\Catalog\Api\Data\ProductInterface;
 
 class DiscountProvider implements LabelProviderInterface
 {
+    /**
+     * @var ConfigInterface
+     */
     private ConfigInterface $config;
 
     /**
@@ -22,6 +25,11 @@ class DiscountProvider implements LabelProviderInterface
         $this->config = $config;
     }
 
+    /**
+     * @param ProductInterface $product
+     *
+     * @return array
+     */
     public function get(ProductInterface $product): array
     {
         $specialPrice = (float)$product->getData('special_price');

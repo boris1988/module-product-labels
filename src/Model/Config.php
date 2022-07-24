@@ -12,6 +12,7 @@ class Config implements ConfigInterface
     private const XML_PATH_CATALOG_PRODUCT_LABEL_DISCOUNT_ENABLED = "catalog/product_label/discount_enabled";
     private const XML_PATH_CATALOG_PRODUCT_LABEL_DISCOUNT_MASK    = "catalog/product_label/discount_mask";
     private const XML_PATH_CATALOG_PRODUCT_LABEL_PDP_POSITION     = "catalog/product_label/pdp_position";
+    private const XML_PATH_CATALOG_PRODUCT_LABEL_BACKGROUND_COLOR = "catalog/product_label/background_color";
 
     /**
      * @var ScopeConfigInterface
@@ -57,6 +58,17 @@ class Config implements ConfigInterface
     {
         return $this->config->getValue(
             self::XML_PATH_CATALOG_PRODUCT_LABEL_PDP_POSITION,
+            ScopeInterface::SCOPE_STORE
+        );
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getBackgroundColor(): ?string
+    {
+        return $this->config->getValue(
+            self::XML_PATH_CATALOG_PRODUCT_LABEL_BACKGROUND_COLOR,
             ScopeInterface::SCOPE_STORE
         );
     }

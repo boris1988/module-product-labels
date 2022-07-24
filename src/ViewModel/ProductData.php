@@ -6,6 +6,7 @@ namespace BPerevyazko\ProductLabel\ViewModel;
 
 use BPerevyazko\ProductLabel\Model\CompositeLabelProvider;
 use BPerevyazko\ProductLabel\Model\ConfigInterface;
+use BPerevyazko\ProductLabel\Model\LabelParamsProvider;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\Serialize\Serializer\Serialize;
@@ -13,17 +14,21 @@ use Magento\Framework\View\Element\Block\ArgumentInterface;
 
 class ProductData implements ArgumentInterface
 {
-    private const CSS_POSITION_MAPPING = [
-        'top_left' => "top:0; left:0;",
-        'top_right' => "top:0; right:0;",
-        'bottom_left' => "bottom:0; left:0;",
-        'bottom_right' => "bottom:0; right:0;",
-    ];
+    use LabelParamsProvider;
 
+    /**
+     * @var CompositeLabelProvider
+     */
     private CompositeLabelProvider $labelProvider;
 
+    /**
+     * @var Json
+     */
     private Json $json;
 
+    /**
+     * @var ConfigInterface
+     */
     private ConfigInterface $config;
 
     /**
@@ -52,8 +57,8 @@ class ProductData implements ArgumentInterface
     {
         $data = [];
         try {
-            $data['labels']   = $this->labelProvider->get($product);
-            $data['position'] = self::CSS_POSITION_MAPPING[$this->config->getPdpPosition()];
+            $data['labels'] = $this->labelProvider->get($product);
+            $data           = array_merge($data, $this->getAdditional());
 
             return $this->json->serialize($data);
         } catch (\InvalidArgumentException $exception) {

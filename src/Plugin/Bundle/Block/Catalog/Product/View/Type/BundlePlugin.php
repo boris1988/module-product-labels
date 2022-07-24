@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace BPerevyazko\ProductLabel\Plugin\Bundle\Block\Catalog\Product\View\Type;
 
+use BPerevyazko\ProductLabel\Model\LabelParamsProvider;
 use BPerevyazko\ProductLabel\Model\CompositeLabelProvider;
 use BPerevyazko\ProductLabel\Model\ConfigInterface;
 use BPerevyazko\ProductLabel\Model\CssPositionInterface;
@@ -17,6 +18,8 @@ use Magento\Framework\Serialize\Serializer\Json;
 
 class BundlePlugin
 {
+    use LabelParamsProvider;
+
     private ConfigInterface $config;
 
     private Json $json;
@@ -51,20 +54,17 @@ class BundlePlugin
         $options       = $this->json->unserialize($result);
         $data          = [];
         try {
-            $childrens = $this->linkManagement->getChildren($bundleProduct->getSku());
+            $children = $this->linkManagement->getChildren($bundleProduct->getSku());
             /** @var Link $child */
-            foreach ($childrens as $child) {
+            foreach ($children as $child) {
                 $product = $this->productRepository->get($child->getSku());
                 $labels  = $this->labelProvider->get($product);
                 if (!empty($labels)) {
-                    $data['labels'][$child->getOptionId()] = $labels;
+                    $data['labels'][$child->getId()] = $labels;
                 }
             }
 
-            $data['position']        = CssPositionInterface::CSS_POSITION_MAPPING[
-                $this->config->getPdpPosition()
-            ];
-            $options['label_config'] = $data;
+            $options['label_config'] = array_merge($data, $this->getAdditional());
 
             return $this->json->serialize($options);
         } catch (NoSuchEntityException | InputException $e) {

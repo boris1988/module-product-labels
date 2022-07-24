@@ -2,28 +2,21 @@ define([
     'uiClass',
     'jquery',
     'underscore',
-    'mage/template'
-], function (Component, $, _, mageTemplate) {
+    'BPerevyazko_ProductLabel/js/view/renderer'
+], function (Component, $, _, renderer) {
     'use strict';
 
     return Component.extend({
-        defaults: {
-            template: '<div class="product-promotion">\n' +
-                '        <div class="promotion-label">\n' +
-                '            <span><%= label %></span>\n' +
-                '        </div>\n' +
-                '    </div>',
-            visible: true,
-        },
-        renderer: null,
         labels: [],
 
         /** @inheritdoc */
         initialize: function (config, element) {
-
+            renderer.init(
+                config.position,
+                config.background_color
+            );
             this.element = element;
             this._super(config);
-            this.renderer = mageTemplate(this.template),
 
             this.build();
         },
@@ -32,9 +25,7 @@ define([
             var that = this;
 
             _.each(that.labels, function (label) {
-                $(that.element).attr('style', that.position).append(that.renderer({
-                    'label': label
-                })).bind(this);
+                renderer.render($(that.element), [label]);
             });
         }
     });

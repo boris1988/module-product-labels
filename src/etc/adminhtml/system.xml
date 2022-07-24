@@ -12,10 +12,24 @@
                 <field id="discount_mask" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Mask for discount</label>
                     <comment>Use {D} as discount value</comment>
+                    <depends>
+                        <field id="discount_enabled">1</field>
+                    </depends>
                 </field>
                 <field id="pdp_position" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Label posiiton for product detail page</label>
                     <source_model>BPerevyazko\ProductLabel\Model\System\Config\Source\Position</source_model>
+                    <depends>
+                        <field id="discount_enabled">1</field>
+                    </depends>
+                </field>
+                <field id="background_color" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Background Color</label>
+                    <comment><![CDATA[Background color]]></comment>
+                    <frontend_model>BPerevyazko\ProductLabel\Block\Color\Adminhtml\Color</frontend_model>
+                    <depends>
+                        <field id="discount_enabled">1</field>
+                    </depends>
                 </field>
             </group>
         </section>

@@ -20,4 +20,9 @@ interface ConfigInterface
      * @return string|null
      */
     public function getPdpPosition(): ?string;
+
+    /**
+     * @return string|null
+     */
+    public function getBackgroundColor(): ?string;
 }
