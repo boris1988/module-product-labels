@@ -16,6 +16,7 @@ define([
             position: '',
             background_color: '',
             mediaContainerClass: '.product.media',
+            productLabelContainer: 'product-labels'
         },
 
         init: function (position, background_color) {
@@ -27,18 +28,27 @@ define([
         /**
          * @param object
          * @param labels
-         * @param position
-         * @param background_color
          */
-        render: function (object, labels, position, background_color) {
-            var that = this;
+        render: function (labels) {
+            var that = this,
+            labelContainerSelector = this.defaults.mediaContainerClass+'>.' + this.defaults.productLabelContainer;
+
+            $(this.defaults.mediaContainerClass)
+                .prepend("<div class='" + this.defaults.productLabelContainer + "'></div>");
 
             _.each(labels, function (label) {
-                object.attr('style', that.position).append(that.defaults.renderer({
+                $(labelContainerSelector).attr('style', that.position).append(that.defaults.renderer({
                     label: label,
                     background_color: that.defaults.background_color
                 })).bind(this);
             });
+        },
+
+        /**
+         * @private
+         */
+        _resetLabels: function () {
+            $(this.defaults.mediaContainerClass+'>.' + this.defaults.productLabelContainer).remove();
         }
     };
 });

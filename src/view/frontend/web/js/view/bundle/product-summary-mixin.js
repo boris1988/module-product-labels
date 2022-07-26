@@ -1,9 +1,8 @@
 define([
     'jquery',
     'underscore',
-    'mage/template',
-    'BPerevyazko_ProductLabel/js/view/renderer'
-], function ($, _, mageTemplate, renderer) {
+    'mage/template'
+], function ($, _, mageTemplate) {
     'use strict';
 
     return function (widget) {
