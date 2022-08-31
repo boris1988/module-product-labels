@@ -19,25 +19,43 @@ define([
             productLabelContainer: 'product-labels'
         },
 
-        init: function (position, background_color) {
+        /**
+         *
+         * @param {String} position
+         * @param {String} background_color
+         * @param {Array} additionalData
+         */
+        init: function (position, background_color ,additionalData = []) {
+            var that = this;
+
             this.defaults.position = position;
             this.defaults.renderer = mageTemplate(this.defaults.template);
             this.defaults.background_color = background_color;
+            if (additionalData.length) {
+                _.each(additionalData, function (property, key) {
+                    that.defaults[key] = property;
+                });
+            }
         },
 
         /**
          * @param object
          * @param labels
          */
-        render: function (labels) {
+        render: function (labels, selector = null) {
             var that = this,
+                labelContainerSelector = null;
+
+            if (selector) {
+                this.defaults.mediaContainerClass = selector;
+            }
             labelContainerSelector = this.defaults.mediaContainerClass+'>.' + this.defaults.productLabelContainer;
 
             $(this.defaults.mediaContainerClass)
                 .prepend("<div class='" + this.defaults.productLabelContainer + "'></div>");
 
             _.each(labels, function (label) {
-                $(labelContainerSelector).attr('style', that.position).append(that.defaults.renderer({
+                $(labelContainerSelector).attr('style', that.defaults.position).append(that.defaults.renderer({
                     label: label,
                     background_color: that.defaults.background_color
                 })).bind(this);

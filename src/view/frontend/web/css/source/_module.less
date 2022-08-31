@@ -3,6 +3,30 @@
 //  _____________________________________________
 
 & when (@media-common = true) {
+    .product-item-info[data-container="product-grid"] {
+        .product-image-container {
+            .product-labels {
+                position: absolute;
+                z-index: 3;
+                border-radius: 2px;
+                font-size: 12px;
+                font-weight: bold;
+
+                .product-promotion {
+                    min-height: 24px;
+
+                    .promotion-label {
+                        > span {
+                            display: block;
+                            padding: 0px 6px;
+                            color: whitesmoke;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     .product.media, .bundle.items {
         position: relative;
 

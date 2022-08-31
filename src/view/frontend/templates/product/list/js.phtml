@@ -1,0 +1,21 @@
+<?php
+/**
+ * @var \Magento\Framework\View\Element\Template $block
+ */
+
+use BPerevyazko\ProductLabel\ViewModel\ProductList;
+
+?>
+<?php
+/** @var ProductList $viewModel */
+$viewModel = $block->getData('view_model');
+$jsonData = $viewModel->getConfig();
+?>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "listProductLabel": <?=/* @noEscape */ $jsonData ?>
+        }
+    }
+
+</script>

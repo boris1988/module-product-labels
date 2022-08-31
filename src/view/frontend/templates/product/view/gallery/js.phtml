@@ -14,6 +14,11 @@ use Magento\Framework\Escaper;
 $viewModel = $block->getData('view_model');
 $jsonData = $viewModel->getProductLabels($block->getProduct());
 ?>
-<div class="product-labels" data-mage-init='{"productLabel":<?= /* @noEscape */ $jsonData ?>}'>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "productLabel": <?=/* @noEscape */ $jsonData ?>
+        }
+    }
 
-</div>
+</script>

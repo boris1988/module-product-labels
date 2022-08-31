@@ -2,6 +2,7 @@ var config = {
     map: {
         '*': {
             'productLabel': 'BPerevyazko_ProductLabel/js/view/product_label',
+            'listProductLabel': 'BPerevyazko_ProductLabel/js/list/product_label',
         }
     },
     config: {

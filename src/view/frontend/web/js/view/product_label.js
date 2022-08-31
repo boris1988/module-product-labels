@@ -25,7 +25,7 @@ define([
             var that = this;
 
             _.each(that.labels, function (label) {
-                renderer.render($(that.element), [label]);
+                renderer.render([label]);
             });
         }
     });

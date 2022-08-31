@@ -8,8 +8,7 @@ define([
     return function (widget) {
         $.widget('mage.SwatchRenderer', widget, {
             options: {
-                mediaContainerClass: '.product.media',
-                productLabelContainer: 'product-labels'
+                pdpBodyClass: 'catalog-product-view'
             },
             _init: function () {
                 this._super();
@@ -22,12 +21,16 @@ define([
             _UpdatePrice: function () {
                 this._super();
                 var $widget = this,
-                    labels = $widget.options.jsonConfig.label_config.labels,
+                    labels = this.options.jsonConfig.label_config.labels,
+                    selector = '.product.media',
                     allowedProduct = this._getAllowedProductWithMinPrice(this._CalcProducts());
 
+                if (!$('body').hasClass(this.options.pdpBodyClass)) {
+                    selector = '.product-image-container-' + this.options.jsonConfig.productId;
+                }
                 renderer._resetLabels();
                 if (!_.isUndefined(labels[allowedProduct])) {
-                    renderer.render(labels[allowedProduct]);
+                    renderer.render(labels[allowedProduct], selector);
                 }
             },
 
