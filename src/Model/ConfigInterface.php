@@ -19,10 +19,30 @@ interface ConfigInterface
     /**
      * @return string|null
      */
-    public function getPdpPosition(): ?string;
+    public function getDiscountLabelPosition(): ?string;
 
     /**
      * @return string|null
      */
-    public function getBackgroundColor(): ?string;
+    public function getDiscountBackgroundColor(): ?string;
+
+    /**
+     * @return bool|null
+     */
+    public function isAttributeLabelEnabled(): ?bool;
+
+    /**
+     * @return string|null
+     */
+    public function getAttributeLabelPosition(): ?string;
+
+    /**
+     * @return string|null
+     */
+    public function getAttributeBackgroundColor(): ?string;
+
+    /**
+     * @return array|null
+     */
+    public function getAttributeCodes(): ?array;
 }

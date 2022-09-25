@@ -4,7 +4,7 @@
         <referenceContainer name="product.info.media">
             <block class="Magento\Catalog\Block\Product\View\Attributes" name="product.info.media.js-label"
                    template="BPerevyazko_ProductLabel::product/view/gallery/js.phtml"
-                   ifconfig="catalog/product_label/discount_enabled" before="-"
+                   ifconfig="product_label/general/discount_enabled" before="-"
             >
                 <arguments>
                     <argument name="view_model" xsi:type="object">BPerevyazko\ProductLabel\ViewModel\ProductData</argument>

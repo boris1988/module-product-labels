@@ -4,6 +4,7 @@
         <arguments>
             <argument name="labelProviders" xsi:type="array">
                 <item name="discount_provider" xsi:type="object">BPerevyazko\ProductLabel\Model\Providers\DiscountProvider</item>
+                <item name="attribute_provider" xsi:type="object">BPerevyazko\ProductLabel\Model\Providers\AttributeProvider</item>
             </argument>
         </arguments>
     </type>

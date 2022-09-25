@@ -13,9 +13,9 @@ trait LabelParamsProvider
     {
         return [
             'position' => CssPositionInterface::CSS_POSITION_MAPPING[
-            $this->config->getPdpPosition()
+            $this->config->getDiscountLabelPosition()
             ],
-            'background_color' => $this->config->getBackgroundColor()
+            'background_color' => $this->config->getDiscountBackgroundColor()
         ];
     }
 }

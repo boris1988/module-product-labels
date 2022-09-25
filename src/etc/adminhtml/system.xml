@@ -2,22 +2,28 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <section id="catalog">
-            <group id="product_label" translate="label" type="text" sortOrder="260" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Product Labels</label>
+        <tab id="bperevyazko" translate="label" sortOrder="2100">
+            <label>Bperevyazko</label>
+        </tab>
+        <section id="product_label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <resource>BPerevyazko_ProductLabel::config</resource>
+            <tab>bperevyazko</tab>
+            <label>Product labels</label>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
                 <field id="discount_enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Enable Discount Label</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
                 <field id="discount_mask" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Mask for discount</label>
-                    <comment>Use {D} as discount value</comment>
+                    <comment>Use {D} as discount value. Default value: -{D}%</comment>
                     <depends>
                         <field id="discount_enabled">1</field>
                     </depends>
                 </field>
-                <field id="pdp_position" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Label posiiton for product detail page</label>
+                <field id="position" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Discount Label posiiton</label>
                     <source_model>BPerevyazko\ProductLabel\Model\System\Config\Source\Position</source_model>
                     <depends>
                         <field id="discount_enabled">1</field>
@@ -26,9 +32,39 @@
                 <field id="background_color" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Background Color</label>
                     <comment><![CDATA[Background color]]></comment>
-                    <frontend_model>BPerevyazko\ProductLabel\Block\Color\Adminhtml\Color</frontend_model>
+                    <frontend_model>BPerevyazko\ProductLabel\Block\Adminhtml\Color</frontend_model>
                     <depends>
                         <field id="discount_enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="product_attributes_label" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Product Attribute Labels</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="position" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Posiiton</label>
+                    <source_model>BPerevyazko\ProductLabel\Model\System\Config\Source\Position</source_model>
+                    <depends>
+                        <field id="product_label/product_attributes_label/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="background_color" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Background Color</label>
+                    <comment><![CDATA[Background color]]></comment>
+                    <frontend_model>BPerevyazko\ProductLabel\Block\Adminhtml\Color</frontend_model>
+                    <depends>
+                        <field id="product_label/product_attributes_label/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="product_attributes" translate="label comment" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Product attributes</label>
+                    <frontend_model>BPerevyazko\ProductLabel\Block\Adminhtml\Form\Field\Product\Attributes</frontend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                    <depends>
+                        <field id="product_attributes_label/enabled">1</field>
                     </depends>
                 </field>
             </group>
