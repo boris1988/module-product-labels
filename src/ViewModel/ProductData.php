@@ -6,7 +6,6 @@ namespace BPerevyazko\ProductLabel\ViewModel;
 
 use BPerevyazko\ProductLabel\Model\CompositeLabelProvider;
 use BPerevyazko\ProductLabel\Model\ConfigInterface;
-use BPerevyazko\ProductLabel\Model\LabelParamsProvider;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\Serialize\Serializer\Serialize;
@@ -14,8 +13,6 @@ use Magento\Framework\View\Element\Block\ArgumentInterface;
 
 class ProductData implements ArgumentInterface
 {
-    use LabelParamsProvider;
-
     /**
      * @var CompositeLabelProvider
      */
@@ -58,7 +55,7 @@ class ProductData implements ArgumentInterface
         $data = [];
         try {
             $data['labels'] = $this->labelProvider->get($product);
-            $data           = array_merge($data, $this->getAdditional());
+            $data           = array_merge($data, []);
 
             return $this->json->serialize($data);
         } catch (\InvalidArgumentException $exception) {

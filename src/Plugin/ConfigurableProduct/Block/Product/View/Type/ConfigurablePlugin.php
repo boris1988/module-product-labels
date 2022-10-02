@@ -6,15 +6,11 @@ namespace BPerevyazko\ProductLabel\Plugin\ConfigurableProduct\Block\Product\View
 
 use BPerevyazko\ProductLabel\Model\CompositeLabelProvider;
 use BPerevyazko\ProductLabel\Model\ConfigInterface;
-use BPerevyazko\ProductLabel\Model\CssPositionInterface;
-use BPerevyazko\ProductLabel\Model\LabelParamsProvider;
 use Magento\ConfigurableProduct\Block\Product\View\Type\Configurable;
 use Magento\Framework\Serialize\Serializer\Json;
 
 class ConfigurablePlugin
 {
-    use LabelParamsProvider;
-
     /**
      * @var ConfigInterface
      */
@@ -68,7 +64,6 @@ class ConfigurablePlugin
             }
         }
 
-        $data                   = array_merge($data, $this->getAdditional());
         $result['label_config'] = $data;
 
         return $this->json->serialize($result);

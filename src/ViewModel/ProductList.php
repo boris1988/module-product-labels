@@ -1,23 +1,18 @@
 <?php
 
-/**
- * Copyright MediaCT. All rights reserved.
- * https://www.mediact.nl
- */
-
 declare(strict_types=1);
 
 namespace BPerevyazko\ProductLabel\ViewModel;
 
 use BPerevyazko\ProductLabel\Model\ConfigInterface;
-use BPerevyazko\ProductLabel\Model\LabelParamsProvider;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
 use Magento\Framework\Serialize\Serializer\Json as JsonSerializer;
 
 class ProductList implements ArgumentInterface
 {
-    use LabelParamsProvider;
-
+    /**
+     * @var JsonSerializer
+     */
     private JsonSerializer $json;
 
     /**
@@ -36,7 +31,7 @@ class ProductList implements ArgumentInterface
      */
     public function getConfig(): string
     {
-        $data = array_merge(['selector' => '.product-item-info'], $this->getAdditional());
+        $data = array_merge(['selector' => '.product-item-info'], []);
 
         return $this->json->serialize($data);
     }

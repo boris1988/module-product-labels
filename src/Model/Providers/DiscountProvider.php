@@ -4,27 +4,11 @@ declare(strict_types=1);
 
 namespace BPerevyazko\ProductLabel\Model\Providers;
 
-use BPerevyazko\ProductLabel\Api\LabelProviderInterface;
-use BPerevyazko\ProductLabel\Model\ConfigInterface;
+use BPerevyazko\ProductLabel\Model\CssPositionInterface;
 use Magento\Catalog\Api\Data\ProductInterface;
 
-class DiscountProvider implements LabelProviderInterface
+class DiscountProvider extends AbstractProvider
 {
-    /**
-     * @var ConfigInterface
-     */
-    private ConfigInterface $config;
-
-    /**
-     * Constructor.
-     *
-     * @param ConfigInterface $config
-     */
-    public function __construct(ConfigInterface $config)
-    {
-        $this->config = $config;
-    }
-
     /**
      * @param ProductInterface $product
      *
@@ -41,7 +25,21 @@ class DiscountProvider implements LabelProviderInterface
         $percentage = ($specialPrice * 100) / $price;
         $discount   = (string)(100 - round($percentage));
         $mask       = $this->config->getDiscountMask();
+        $labels[]   = [
+            'label' => str_replace('{D}', $discount, $mask),
+            'background_color' => $this->config->getDiscountBackgroundColor()
+        ];
 
-        return [str_replace('{D}', $discount, $mask)];
+        return $labels;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPosition(): string
+    {
+          return CssPositionInterface::CSS_POSITION_MAPPING[
+                $this->config->getDiscountLabelPosition()
+            ];
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace BPerevyazko\ProductLabel\Model;
 
 use BPerevyazko\ProductLabel\Api\LabelProviderInterface;
+use BPerevyazko\ProductLabel\Model\Providers\AbstractProvider;
 use Magento\Catalog\Api\Data\ProductInterface;
 
 class CompositeLabelProvider implements LabelProviderInterface
@@ -32,9 +33,15 @@ class CompositeLabelProvider implements LabelProviderInterface
     public function get(ProductInterface $product): array
     {
         $labels = [];
-        /** @var LabelProviderInterface $labelProvider */
+        /** @var AbstractProvider $labelProvider */
         foreach ($this->labelProviders as $labelProvider) {
-            $labels = array_merge_recursive($labels, $labelProvider->get($product));
+            $position                    = $labelProvider->getPosition();
+            $labels[$position]           = $labels[$position] ?? [];
+            $labels[$position]['labels'] = $labels[$position]['labels'] ?? [];
+            $labels[$position]['labels'] = array_merge_recursive(
+                $labels[$position]['labels'],
+                $labelProvider->get($product)
+            );
         }
 
         return $labels;

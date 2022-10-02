@@ -12,10 +12,6 @@ define([
             },
             _init: function () {
                 this._super();
-                renderer.init(
-                    this.options.jsonConfig.label_config.position,
-                    this.options.jsonConfig.label_config.background_color
-                );
             },
 
             _UpdatePrice: function () {
@@ -30,7 +26,10 @@ define([
                 }
                 renderer._resetLabels();
                 if (!_.isUndefined(labels[allowedProduct])) {
-                    renderer.render(labels[allowedProduct], selector);
+                    _.each(labels[allowedProduct], function (label, position) {
+                        renderer.init(position);
+                        renderer.render(label.labels, selector);
+                    });
                 }
             },
 

@@ -13,10 +13,6 @@ define([
             },
             _create: function () {
                 this._super();
-                renderer.init(
-                    this.options.spConfig.label_config.position,
-                    this.options.spConfig.label_config.background_color
-                );
             },
 
             _reloadPrice: function () {
@@ -26,7 +22,10 @@ define([
 
                 renderer._resetLabels();
                 if (!_.isUndefined(labels[$widget.simpleProduct])) {
-                    renderer.render(labels[$widget.simpleProduct]);
+                    _.each(labels[$widget.simpleProduct], function (label, position) {
+                        renderer.init(position);
+                        renderer.render(label.labels);
+                    });
                 }
             },
 

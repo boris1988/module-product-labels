@@ -1,47 +1,49 @@
 <?php
 
-/**
- * Copyright MediaCT. All rights reserved.
- * https://www.mediact.nl
- */
-
 declare(strict_types=1);
 
 namespace BPerevyazko\ProductLabel\Model\Providers;
 
-use BPerevyazko\ProductLabel\Api\LabelProviderInterface;
 use BPerevyazko\ProductLabel\Model\ConfigInterface;
+use BPerevyazko\ProductLabel\Model\CssPositionInterface;
 use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\Catalog\Model\ResourceModel\ProductFactory;
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
+use Magento\Framework\Exception\LocalizedException;
 
-class AttributeProvider implements LabelProviderInterface
+class AttributeProvider extends AbstractProvider
 {
+    /**
+     * @var array
+     */
     private $attributes;
 
     /**
-     * @var ConfigInterface
+     * @var ProductFactory
      */
-    private ConfigInterface $config;
-
-    private \Magento\Catalog\Model\ResourceModel\ProductFactory $productResourceFactory;
+    private ProductFactory $productResourceFactory;
 
     /**
-     * Constructor.
+     * Constructor
      *
      * @param ConfigInterface $config
+     * @param ProductFactory  $productResourceFactory
+     * @param string          $type
      */
     public function __construct(
         ConfigInterface $config,
-        \Magento\Catalog\Model\ResourceModel\ProductFactory $productResourceFactory
+        ProductFactory $productResourceFactory,
+        string $type
     ) {
-        $this->config                 = $config;
         $this->productResourceFactory = $productResourceFactory;
+        parent::__construct($config, $type);
     }
 
     /**
      * @param ProductInterface $product
      *
      * @return array
+     * @throws LocalizedException
      */
     public function get(ProductInterface $product): array
     {
@@ -67,7 +69,10 @@ class AttributeProvider implements LabelProviderInterface
                 continue;
             }
 
-            $labels[] = $value;
+            $labels[] = [
+                'label' => $value,
+                'background_color' => $this->config->getAttributeBackgroundColor()
+            ];
         }
 
         return $labels;
@@ -88,5 +93,15 @@ class AttributeProvider implements LabelProviderInterface
         $this->attributes[$attributeCode] = $productResource->getAttribute($attributeCode);
 
         return $this->attributes[$attributeCode];
+    }
+
+    /**
+     * @return string
+     */
+    public function getPosition(): string
+    {
+        return CssPositionInterface::CSS_POSITION_MAPPING[
+                $this->config->getAttributeLabelPosition()
+            ];
     }
 }

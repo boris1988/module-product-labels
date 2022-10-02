@@ -18,19 +18,42 @@ use Magento\Framework\Serialize\Serializer\Json;
 
 class BundlePlugin
 {
-    use LabelParamsProvider;
 
+    /**
+     * @var ConfigInterface
+     */
     private ConfigInterface $config;
 
+    /**
+     * @var Json
+     */
     private Json $json;
 
+    /**
+     * @var CompositeLabelProvider
+     */
     private CompositeLabelProvider $labelProvider;
 
+    /**
+     * @var ProductLinkManagementInterface
+     */
     private ProductLinkManagementInterface $linkManagement;
 
+    /**
+     * @var ProductRepositoryInterface
+     */
     private ProductRepositoryInterface $productRepository;
 
 
+    /**
+     * Constructor
+     *
+     * @param ConfigInterface                $config
+     * @param Json                           $json
+     * @param ProductLinkManagementInterface $linkManagement
+     * @param ProductRepositoryInterface     $productRepository
+     * @param CompositeLabelProvider         $labelProvider
+     */
     public function __construct(
         ConfigInterface $config,
         Json $json,
@@ -44,6 +67,13 @@ class BundlePlugin
         $this->productRepository = $productRepository;
         $this->labelProvider     = $labelProvider;
     }
+
+    /**
+     * @param Bundle $subject
+     * @param string $result
+     *
+     * @return bool|string
+     */
     public function afterGetJsonConfig(Bundle $subject, string $result)
     {
         if ($this->config->isDiscountLabelEnabled() === false) {
@@ -64,7 +94,7 @@ class BundlePlugin
                 }
             }
 
-            $options['label_config'] = array_merge($data, $this->getAdditional());
+            $options['label_config'] = $data;
 
             return $this->json->serialize($options);
         } catch (NoSuchEntityException | InputException $e) {

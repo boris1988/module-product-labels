@@ -9,6 +9,18 @@
         </arguments>
     </type>
 
+    <type name="BPerevyazko\ProductLabel\Model\Providers\DiscountProvider">
+        <arguments>
+            <argument name="type" xsi:type="string">discount</argument>
+        </arguments>
+    </type>
+
+    <type name="BPerevyazko\ProductLabel\Model\Providers\AttributeProvider">
+        <arguments>
+            <argument name="type" xsi:type="string">attributes</argument>
+        </arguments>
+    </type>
+
     <type name="Magento\ConfigurableProduct\Block\Product\View\Type\Configurable">
         <plugin name="bperevyazko_product_label_configurable_config"
                 type="BPerevyazko\ProductLabel\Plugin\ConfigurableProduct\Block\Product\View\Type\ConfigurablePlugin" sortOrder="10" />

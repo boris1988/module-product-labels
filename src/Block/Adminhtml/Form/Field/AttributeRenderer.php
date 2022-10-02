@@ -1,24 +1,18 @@
 <?php
 
-/**
- * Copyright MediaCT. All rights reserved.
- * https://www.mediact.nl
- */
-
 declare(strict_types=1);
 
 namespace BPerevyazko\ProductLabel\Block\Adminhtml\Form\Field;
 
-use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\ResourceModel\Product\Attribute\Collection;
-use Magento\Eav\Api\AttributeRepositoryInterface;
-use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
-use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\View\Element\Context;
 use Magento\Framework\View\Element\Html\Select;
 
 class AttributeRenderer extends Select
 {
+    /**
+     * @var string[]
+     */
     private $ninAttributeCodes = [
         'sku',
         'description',
@@ -50,10 +44,10 @@ class AttributeRenderer extends Select
         'allow_message',
         'swatch_image',
     ];
-    private AttributeRepositoryInterface $attributeRepository;
 
-    private SearchCriteriaBuilder $searchCriteriaBuilder;
-
+    /**
+     * @var Collection
+     */
     private Collection $collection;
 
     /**

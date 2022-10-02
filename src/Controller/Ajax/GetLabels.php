@@ -1,10 +1,5 @@
 <?php
 
-/**
- * Copyright MediaCT. All rights reserved.
- * https://www.mediact.nl
- */
-
 declare(strict_types=1);
 
 namespace BPerevyazko\ProductLabel\Controller\Ajax;
@@ -25,18 +20,34 @@ class GetLabels implements HttpPostActionInterface
      */
     private JsonFactory $resultJsonFactory;
 
+    /**
+     * @var RequestInterface
+     */
     private RequestInterface $request;
 
+    /**
+     * @var JsonSerializer
+     */
     private JsonSerializer $serializer;
 
+    /**
+     * @var CompositeLabelProvider
+     */
     private CompositeLabelProvider $labelProvider;
 
+    /**
+     * @var ProductRepositoryInterface
+     */
     private ProductRepositoryInterface $productRepository;
 
     /**
-     * Constructor.
+     * Constructor
      *
-     * @param JsonFactory $resultJsonFactory
+     * @param RequestInterface           $request
+     * @param JsonSerializer             $serializer
+     * @param ProductRepositoryInterface $productRepository
+     * @param CompositeLabelProvider     $labelProvider
+     * @param JsonFactory                $resultJsonFactory
      */
     public function __construct(
         RequestInterface $request,

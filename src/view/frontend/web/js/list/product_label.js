@@ -51,9 +51,10 @@ define([
                 if (!elm.length) {
                     return false;
                 }
-                //var imgContainer = $(elm).closest('.product-item-info').find('.product-item-photo');
-                renderer.render(labels, selector);
-
+                _.each(labels, function (label, position) {
+                    renderer.init(position);
+                    renderer.render(label.labels, selector);
+                });
             });
         }
     });

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * Copyright MediaCT. All rights reserved.
- * https://www.mediact.nl
- */
-
 declare(strict_types=1);
 
 namespace BPerevyazko\ProductLabel\Block\Adminhtml\Form\Field\Product;
@@ -18,7 +13,9 @@ class Attributes extends AbstractFieldArray
 {
     private const NAME = "attribute_code";
 
-
+    /**
+     * @return void
+     */
     protected function _prepareToRender()
     {
         $this->addColumn(
@@ -35,6 +32,11 @@ class Attributes extends AbstractFieldArray
         parent::_prepareToRender();
     }
 
+    /**
+     * @return AttributeRenderer
+     *
+     * @throws LocalizedException
+     */
     private function getAttributesRenderer()
     {
         if (!isset($this->attributeRender)) {
@@ -63,7 +65,9 @@ class Attributes extends AbstractFieldArray
 
         $attributeCode = $row->getData(self::NAME);
         if ($attributeCode !== null) {
-            $options['option_' . $this->getAttributesRenderer()->calcOptionHash($attributeCode)] = 'selected="selected"';
+            $options[
+                'option_' . $this->getAttributesRenderer()->calcOptionHash($attributeCode)
+            ] = 'selected="selected"';
         }
 
         $row->setData('option_extra_attrs', $options);

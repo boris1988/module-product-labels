@@ -23,30 +23,33 @@ define([
             _renderOptionRow: function (key, optionIndex) {
                 var template,
                     that = this,
-                    _labels_ = "";
+                    labelsArr = [],
+                    labelsContent = "";
 
                 if (!_.isUndefined(this.cache.currentElement.label_config.labels[optionIndex])) {
-                    _.each(this.cache.currentElement.label_config.labels[optionIndex], function (label) {
-                        _labels_ = mageTemplate($.trim(that.label_template), {
-                            data: {
-                                label: label,
-                                background_color: that.cache.currentElement.label_config.background_color
-                            }
+                    _.each(this.cache.currentElement.label_config.labels[optionIndex], function (labels) {
+                        _.each(labels.labels, function (label, position) {
+                            labelsArr.push(mageTemplate($.trim(that.label_template), {
+                                data: {
+                                    label: label.label,
+                                    background_color: label.background_color
+                                }
+                            }));
                         });
                     });
                 }
 
-                if (_labels_ == "") {
-                    _labels_ = false;
+                if (labelsArr.length == 0) {
+                    labelsContent = false;
                 } else {
-                    _labels_ = '<div class="product-promotion">'+_labels_+'</div>';
+                    labelsContent = '<div class="product-promotion">'+labelsArr.join("")+'</div>';
                 }
 
                 template = mageTemplate($.trim(this.template), {
                     data: {
                         _quantity_: this.cache.currentElement.options[this.cache.currentKey].selections[optionIndex].qty,
                         _produceLabel_: this.cache.currentElement.options[this.cache.currentKey].selections[optionIndex].name,
-                        _labels_: _labels_
+                        _labels_: labelsContent
                     }
                 });
                 this.cache.summaryContainer

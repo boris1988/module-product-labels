@@ -22,15 +22,13 @@ define([
         /**
          *
          * @param {String} position
-         * @param {String} background_color
          * @param {Array} additionalData
          */
-        init: function (position, background_color ,additionalData = []) {
+        init: function (position ,additionalData = []) {
             var that = this;
 
             this.defaults.position = position;
             this.defaults.renderer = mageTemplate(this.defaults.template);
-            this.defaults.background_color = background_color;
             if (additionalData.length) {
                 _.each(additionalData, function (property, key) {
                     that.defaults[key] = property;
@@ -51,13 +49,14 @@ define([
             }
             labelContainerSelector = this.defaults.mediaContainerClass+'>.' + this.defaults.productLabelContainer;
 
-            $(this.defaults.mediaContainerClass)
-                .prepend("<div class='" + this.defaults.productLabelContainer + "'></div>");
+            var obj = $('<div class="' + this.defaults.productLabelContainer + '"></div>')
+                .attr('style', that.defaults.position)
+                .prependTo(this.defaults.mediaContainerClass)
 
             _.each(labels, function (label) {
-                $(labelContainerSelector).attr('style', that.defaults.position).append(that.defaults.renderer({
-                    label: label,
-                    background_color: that.defaults.background_color
+                obj.append(that.defaults.renderer({
+                    label: label.label,
+                    background_color: label.background_color
                 })).bind(this);
             });
         },

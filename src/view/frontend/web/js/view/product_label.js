@@ -11,10 +11,6 @@ define([
 
         /** @inheritdoc */
         initialize: function (config, element) {
-            renderer.init(
-                config.position,
-                config.background_color
-            );
             this.element = element;
             this._super(config);
 
@@ -24,8 +20,9 @@ define([
         build: function () {
             var that = this;
 
-            _.each(that.labels, function (label) {
-                renderer.render([label]);
+            _.each(that.labels, function (label, position) {
+                renderer.init(position);
+                renderer.render(label.labels);
             });
         }
     });
