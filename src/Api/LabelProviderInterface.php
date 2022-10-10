@@ -14,5 +14,4 @@ interface LabelProviderInterface
      * @return array
      */
     public function get(ProductInterface $product): array;
-
 }

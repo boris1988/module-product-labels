@@ -44,7 +44,6 @@ class BundlePlugin
      */
     private ProductRepositoryInterface $productRepository;
 
-
     /**
      * Constructor
      *

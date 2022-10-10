@@ -7,22 +7,22 @@ namespace BPerevyazko\ProductLabel\Block\Adminhtml;
 use Magento\Backend\Block\Template\Context;
 use Magento\Config\Block\System\Config\Form\Field;
 use Magento\Framework\Data\Form\Element\AbstractElement;
+use Magento\Framework\View\Helper\SecureHtmlRenderer;
 
 class Color extends Field
 {
     /**
-     * Constructor.
-     *
-     * @param Context $context
-     * @param array   $data
+     * @param Context                 $context
+     * @param array                   $data
+     * @param SecureHtmlRenderer|null $secureRenderer
      */
     public function __construct(
         Context $context,
-        array $data = []
+        array $data = [],
+        ?SecureHtmlRenderer $secureRenderer = null
     ) {
         parent::__construct($context, $data);
     }
-
     /**
      * @param AbstractElement $element
      *

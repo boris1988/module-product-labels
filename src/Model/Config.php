@@ -16,8 +16,10 @@ class Config implements ConfigInterface
     private const XML_PATH_PRODUCT_LABEL_GENERAL_BACKGROUND_COLOR   = "product_label/general/background_color";
     private const XML_PATH_PRODUCT_LABEL_ATTRIBUTE_ENABLED          = "product_label/product_attributes_label/enabled";
     private const XML_PATH_PRODUCT_LABEL_ATTRIBUTE_POSITION         = "product_label/product_attributes_label/position";
-    private const XML_PATH_PRODUCT_LABEL_ATTRIBUTE_BACKGROUND_COLOR = "product_label/product_attributes_label/background_color";
-    private const XML_PATH_PRODUCT_LABEL_ATTRIBUTE_ATTRIBUTE_CODES  = "product_label/product_attributes_label/product_attributes";
+    private const XML_PATH_PRODUCT_LABEL_ATTRIBUTE_BACKGROUND_COLOR =
+        "product_label/product_attributes_label/background_color";
+    private const XML_PATH_PRODUCT_LABEL_ATTRIBUTE_ATTRIBUTE_CODES  =
+        "product_label/product_attributes_label/product_attributes";
 
     /**
      * @var ScopeConfigInterface
