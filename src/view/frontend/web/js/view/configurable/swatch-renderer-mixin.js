@@ -21,20 +21,16 @@ define([
                     selector = '.product.media',
                     allowedProduct = this._getAllowedProductWithMinPrice(this._CalcProducts());
 
-                if (!$('body').hasClass(this.options.pdpBodyClass)) {
+                if ($widget.inProductList) {
                     selector = '.product-image-container-' + this.options.jsonConfig.productId;
                 }
-                renderer._resetLabels();
+                renderer.resetLabels(selector);
                 if (!_.isUndefined(labels[allowedProduct])) {
                     _.each(labels[allowedProduct], function (label, position) {
                         renderer.init(position);
                         renderer.render(label.labels, selector);
                     });
                 }
-            },
-
-            _resetLabels: function (labels) {
-                labels.remove();
             }
         });
 

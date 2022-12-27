@@ -51,7 +51,12 @@ define([
                 if (!elm.length) {
                     return false;
                 }
+
                 _.each(labels, function (label, position) {
+                    if (label.labels.length == 0) {
+                        return;
+                    }
+
                     renderer.init(position);
                     renderer.render(label.labels, selector);
                 });

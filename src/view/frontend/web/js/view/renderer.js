@@ -62,10 +62,15 @@ define([
         },
 
         /**
-         * @private
+         *
+         * @param selector
          */
-        _resetLabels: function () {
-            $(this.defaults.mediaContainerClass+'>.' + this.defaults.productLabelContainer).remove();
+        resetLabels: function (selector = null) {
+            let resetSelector = this.defaults.mediaContainerClass + '>.' + this.defaults.productLabelContainer;;
+            if (selector !== null) {
+                resetSelector  = selector + '>.' + this.defaults.productLabelContainer;
+            }
+            $(resetSelector).remove();
         }
     };
 });

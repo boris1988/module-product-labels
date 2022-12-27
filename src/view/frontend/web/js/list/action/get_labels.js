@@ -6,8 +6,9 @@
 define([
     'jquery',
     'mage/storage',
-    'mage/translate'
-], function ($, storage, $t) {
+    'mage/translate',
+    'mage/url'
+], function ($, storage, $t, url) {
     'use strict';
 
     var callbacks = [],
@@ -16,6 +17,7 @@ define([
          * @param {Array} productIds
          */
         action = function (productIds) {
+            url.setBaseUrl(window.BASE_URL);
 
             return storage.post(
                 'productLabel/ajax/getLabels',

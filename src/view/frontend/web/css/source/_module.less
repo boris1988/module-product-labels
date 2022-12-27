@@ -3,8 +3,10 @@
 //  _____________________________________________
 
 & when (@media-common = true) {
-    .product-item-info[data-container="product-grid"] {
+    .product-item-info {
         .product-image-container {
+            position: relative;
+
             .product-labels {
                 position: absolute;
                 z-index: 3;
@@ -13,7 +15,8 @@
                 font-weight: bold;
 
                 .product-promotion {
-                    min-height: 20px;
+                    min-height: 18px;
+                    width: fit-content;
 
                     .promotion-label {
                         > span {
@@ -27,7 +30,7 @@
         }
     }
 
-    .product.media, .bundle.items {
+    .product.media {
         position: relative;
 
         div[data-container=options] {
@@ -42,7 +45,7 @@
         .product-labels {
             z-index: 3;
             border-radius: 2px;
-            font-size: 16px;
+            font-size: 12px;
             font-weight: bold;
 
             .product-promotion {
@@ -55,6 +58,12 @@
                     }
                 }
             }
+        }
+    }
+
+    .bundle.items {
+        .product-labels {
+            font-size: 10px;
         }
     }
 }

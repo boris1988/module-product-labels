@@ -20,17 +20,12 @@ define([
                 var $widget = this,
                     labels = $widget.options.spConfig.label_config.labels;
 
-                renderer._resetLabels();
                 if (!_.isUndefined(labels[$widget.simpleProduct])) {
                     _.each(labels[$widget.simpleProduct], function (label, position) {
                         renderer.init(position);
                         renderer.render(label.labels);
                     });
                 }
-            },
-
-            _resetLabels: function (labels) {
-                labels.remove();
             }
         });
 

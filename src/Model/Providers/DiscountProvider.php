@@ -22,6 +22,9 @@ class DiscountProvider extends AbstractProvider
         }
 
         $price      = (float)$product->getData('price');
+        if ($price === $specialPrice) {
+            return [];
+        }
         $percentage = ($specialPrice * 100) / $price;
         $discount   = (string)(100 - round($percentage));
         $mask       = $this->config->getDiscountMask();

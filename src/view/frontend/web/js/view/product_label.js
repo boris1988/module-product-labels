@@ -21,6 +21,9 @@ define([
             var that = this;
 
             _.each(that.labels, function (label, position) {
+                if (label.labels.length == 0) {
+                    return;
+                }
                 renderer.init(position);
                 renderer.render(label.labels);
             });
