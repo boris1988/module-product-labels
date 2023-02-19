@@ -59,4 +59,12 @@ abstract class AbstractProvider implements LabelProviderInterface
     {
         return [];
     }
+
+    /**
+     * @return bool
+     */
+    public function isEnabled(): bool
+    {
+        return false;
+    }
 }

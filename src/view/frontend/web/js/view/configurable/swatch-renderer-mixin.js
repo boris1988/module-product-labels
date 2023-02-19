@@ -20,7 +20,9 @@ define([
                     labels = this.options.jsonConfig.label_config.labels,
                     selector = '.product.media',
                     allowedProduct = this._getAllowedProductWithMinPrice(this._CalcProducts());
-
+                if (typeof labels == 'undefined') {
+                    return;
+                }
                 if ($widget.inProductList) {
                     selector = '.product-image-container-' + this.options.jsonConfig.productId;
                 }

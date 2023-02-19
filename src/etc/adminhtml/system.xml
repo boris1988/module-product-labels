@@ -64,7 +64,7 @@
                     <frontend_model>BPerevyazko\ProductLabel\Block\Adminhtml\Form\Field\Product\Attributes</frontend_model>
                     <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
                     <depends>
-                        <field id="product_attributes_label/enabled">1</field>
+                        <field id="product_label/product_attributes_label/enabled">1</field>
                     </depends>
                 </field>
             </group>

@@ -26,6 +26,9 @@ define([
                     labelContainerSelector = $widget.options.mediaContainerClass+'>.' + $widget.options.productLabelContainer,
                     allowedProduct = this._getAllowedProductWithMinPrice(this._CalcProducts());
 
+                if (typeof labels == 'undefined') {
+                    return;
+                }
                 $widget._resetLabels($(labelContainerSelector));
                 if (!_.isUndefined(labels[allowedProduct])) {
                     $($widget.options.mediaContainerClass)
