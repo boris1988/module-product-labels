@@ -35,9 +35,6 @@ class CompositeLabelProvider implements LabelProviderInterface
         $labels = [];
         /** @var AbstractProvider $labelProvider */
         foreach ($this->labelProviders as $labelProvider) {
-            if ($labelProvider->isEnabled() === false) {
-                continue;
-            }
             $position                    = $labelProvider->getPosition();
             $labels[$position]           = $labels[$position] ?? [];
             $labels[$position]['labels'] = $labels[$position]['labels'] ?? [];

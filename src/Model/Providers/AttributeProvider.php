@@ -104,12 +104,4 @@ class AttributeProvider extends AbstractProvider
                 $this->config->getAttributeLabelPosition()
             ];
     }
-
-    /**
-     * @return bool
-     */
-    public function isEnabled(): bool
-    {
-        return $this->config->isAttributeLabelEnabled();
-    }
 }
