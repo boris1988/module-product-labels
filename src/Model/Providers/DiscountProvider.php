@@ -22,18 +22,17 @@ class DiscountProvider extends AbstractProvider
     private $timezone;
 
     /**
-     * @param ConfigInterface $config
-     * @param \Magento\Framework\Locale\ResolverInterface $resolver
+     * @param ConfigInterface                                      $config
+     * @param \Magento\Framework\Locale\ResolverInterface          $resolver
      * @param \Magento\Framework\Stdlib\DateTime\TimezoneInterface $timezone
-     * @param string $type
+     * @param string                                               $type
      */
     public function __construct(
         ConfigInterface                                      $config,
         \Magento\Framework\Locale\ResolverInterface          $resolver,
         \Magento\Framework\Stdlib\DateTime\TimezoneInterface $timezone,
         string                                               $type
-    )
-    {
+    ) {
         $this->resolver = $resolver;
         $this->timezone = $timezone;
         parent::__construct($config, $type);
@@ -62,12 +61,14 @@ class DiscountProvider extends AbstractProvider
 
         $currentDate = $this->timezone->date();
         if ($product->getSpecialFromDate()
-            && $this->timezone->date($product->getSpecialFromDate()) > $currentDate) {
+            && $this->timezone->date($product->getSpecialFromDate()) > $currentDate
+        ) {
             return [];
         }
 
         if ($product->getSpecialToDate()
-            && $this->timezone->date($product->getSpecialToDate()) < $currentDate) {
+            && $this->timezone->date($product->getSpecialToDate()) < $currentDate
+        ) {
             return [];
         }
 

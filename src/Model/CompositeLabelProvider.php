@@ -33,10 +33,13 @@ class CompositeLabelProvider implements LabelProviderInterface
     public function get(ProductInterface $product): array
     {
         $labels = [];
-        /** @var AbstractProvider $labelProvider */
+
+        /**
+         * @var AbstractProvider $labelProvider
+         */
         foreach ($this->labelProviders as $labelProvider) {
-            $position                    = $labelProvider->getPosition();
-            $labels[$position]           = $labels[$position] ?? [];
+            $position = $labelProvider->getPosition();
+            $labels[$position] = $labels[$position] ?? [];
             $labels[$position]['labels'] = $labels[$position]['labels'] ?? [];
             $labels[$position]['labels'] = array_merge_recursive(
                 $labels[$position]['labels'],

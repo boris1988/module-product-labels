@@ -3,15 +3,16 @@
  * See COPYING.txt for license details.
  */
 
-define([
+define(
+    [
     'jquery',
     'mage/storage',
     'mage/translate',
     'mage/url'
-], function ($, storage, $t, url) {
-    'use strict';
+    ], function ($, storage, $t, url) {
+        'use strict';
 
-    var callbacks = [],
+        var callbacks = [],
 
         /**
          * @param {Array} productIds
@@ -23,24 +24,31 @@ define([
                 'productLabel/ajax/getLabels',
                 JSON.stringify(productIds),
                 true
-            ).done(function (response) {
-                if (response.errors) {
-                    return;
-                } else {
-                    callbacks.forEach(function (callback) {
-                        callback(response);
-                    });
+            ).done(
+                function (response) {
+                    if (response.errors) {
+                        return;
+                    } else {
+                        callbacks.forEach(
+                            function (callback) {
+                                callback(response);
+                            }
+                        );
+                    }
                 }
-            }).fail(function () {
-                return;
-            });
+            ).fail(
+                function () {
+                    return;
+                }
+            );
         };
-    /**
-     * @param {Function} callback
-     */
-    action.registerLoginCallback = function (callback) {
-        callbacks.push(callback);
-    };
+        /**
+         * @param {Function} callback
+         */
+        action.registerLoginCallback = function (callback) {
+            callbacks.push(callback);
+        };
 
-    return action;
-});
+        return action;
+    }
+);

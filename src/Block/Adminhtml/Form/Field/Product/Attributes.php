@@ -26,7 +26,7 @@ class Attributes extends AbstractFieldArray
             ]
         );
 
-        $this->_addAfter       = false;
+        $this->_addAfter = false;
         $this->_addButtonLabel = __('Add');
 
         parent::_prepareToRender();
@@ -40,7 +40,9 @@ class Attributes extends AbstractFieldArray
     private function getAttributesRenderer()
     {
         if (!isset($this->attributeRender)) {
-            /** @var AttributeRenderer $renderer */
+            /**
+             * @var AttributeRenderer $renderer
+             */
             $renderer = $this->getLayout()->createBlock(
                 AttributeRenderer::class,
                 self::NAME,
@@ -65,9 +67,7 @@ class Attributes extends AbstractFieldArray
 
         $attributeCode = $row->getData(self::NAME);
         if ($attributeCode !== null) {
-            $options[
-                'option_' . $this->getAttributesRenderer()->calcOptionHash($attributeCode)
-            ] = 'selected="selected"';
+            $options['option_' . $this->getAttributesRenderer()->calcOptionHash($attributeCode)] = 'selected="selected"';
         }
 
         $row->setData('option_extra_attrs', $options);

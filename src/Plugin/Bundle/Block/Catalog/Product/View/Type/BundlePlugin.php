@@ -47,24 +47,25 @@ class BundlePlugin
     /**
      * Constructor
      *
-     * @param ConfigInterface                $config
-     * @param Json                           $json
+     * @param ConfigInterface $config
+     * @param Json $json
      * @param ProductLinkManagementInterface $linkManagement
-     * @param ProductRepositoryInterface     $productRepository
-     * @param CompositeLabelProvider         $labelProvider
+     * @param ProductRepositoryInterface $productRepository
+     * @param CompositeLabelProvider $labelProvider
      */
     public function __construct(
-        ConfigInterface $config,
-        Json $json,
+        ConfigInterface                $config,
+        Json                           $json,
         ProductLinkManagementInterface $linkManagement,
-        ProductRepositoryInterface $productRepository,
-        CompositeLabelProvider $labelProvider
-    ) {
-        $this->config            = $config;
-        $this->json              = $json;
-        $this->linkManagement    = $linkManagement;
+        ProductRepositoryInterface     $productRepository,
+        CompositeLabelProvider         $labelProvider
+    )
+    {
+        $this->config = $config;
+        $this->json = $json;
+        $this->linkManagement = $linkManagement;
         $this->productRepository = $productRepository;
-        $this->labelProvider     = $labelProvider;
+        $this->labelProvider = $labelProvider;
     }
 
     /**
@@ -80,14 +81,16 @@ class BundlePlugin
         }
 
         $bundleProduct = $subject->getProduct();
-        $options       = $this->json->unserialize($result);
-        $data          = [];
+        $options = $this->json->unserialize($result);
+        $data = [];
         try {
             $children = $this->linkManagement->getChildren($bundleProduct->getSku());
-            /** @var Link $child */
+            /**
+             * @var Link $child
+             */
             foreach ($children as $child) {
                 $product = $this->productRepository->get($child->getSku());
-                $labels  = $this->labelProvider->get($product);
+                $labels = $this->labelProvider->get($product);
                 if (!empty($labels)) {
                     $data['labels'][$child->getId()] = $labels;
                 }
@@ -96,7 +99,7 @@ class BundlePlugin
             $options['label_config'] = $data;
 
             return $this->json->serialize($options);
-        } catch (NoSuchEntityException | InputException $e) {
+        } catch (NoSuchEntityException|InputException $e) {
             return $result;
         }
     }
