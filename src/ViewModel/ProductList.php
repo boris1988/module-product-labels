@@ -16,9 +16,13 @@ class ProductList implements ArgumentInterface
     private JsonSerializer $json;
 
     /**
-     * Constructor.
-     *
+     * @var ConfigInterface
+     */
+    private ConfigInterface $config;
+
+    /**
      * @param JsonSerializer $json
+     * @param ConfigInterface $config
      */
     public function __construct(JsonSerializer $json, ConfigInterface $config)
     {
@@ -27,6 +31,8 @@ class ProductList implements ArgumentInterface
     }
 
     /**
+     * Get config
+     *
      * @return string
      */
     public function getConfig(): string

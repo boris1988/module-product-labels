@@ -59,8 +59,7 @@ class BundlePlugin
         ProductLinkManagementInterface $linkManagement,
         ProductRepositoryInterface     $productRepository,
         CompositeLabelProvider         $labelProvider
-    )
-    {
+    ) {
         $this->config = $config;
         $this->json = $json;
         $this->linkManagement = $linkManagement;

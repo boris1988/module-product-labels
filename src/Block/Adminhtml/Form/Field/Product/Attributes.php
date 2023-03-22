@@ -67,7 +67,9 @@ class Attributes extends AbstractFieldArray
 
         $attributeCode = $row->getData(self::NAME);
         if ($attributeCode !== null) {
-            $options['option_' . $this->getAttributesRenderer()->calcOptionHash($attributeCode)] = 'selected="selected"';
+            $options[
+                'option_' . $this->getAttributesRenderer()->calcOptionHash($attributeCode)
+            ] = 'selected="selected"';
         }
 
         $row->setData('option_extra_attrs', $options);
