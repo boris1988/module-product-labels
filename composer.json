@@ -1,7 +1,6 @@
 {
     "name": "bperevyazko/module-product-label",
     "description": "Product labels module for products.",
-    "license": "proprietary",
     "type": "magento2-module",
     "version": "1.0.0",
     "repositories": [
@@ -10,6 +9,10 @@
             "url": "https://repo.magento.com/"
         }
     ],
+    "require": {
+        "php": "~7.4.0||~8.1.0",
+        "magento/framework": "~102.0.0||~103.0.0||~104.0.0"
+    },
     "authors": [
         {
             "name": "Borys Pereviazko",
@@ -17,7 +20,10 @@
             "email": "borisperevyazko@gmail.com"
         }
     ],
-    "minimum-stability": "stable",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
     "autoload": {
         "psr-4": {
             "BPerevyazko\\ProductLabel\\": "src/"
