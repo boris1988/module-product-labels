@@ -45,7 +45,7 @@
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
                 <field id="position" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Posiiton</label>
+                    <label>Position</label>
                     <source_model>BPerevyazko\ProductLabel\Model\System\Config\Source\Position</source_model>
                     <depends>
                         <field id="product_label/product_attributes_label/enabled">1</field>
