@@ -20,18 +20,8 @@
    bin/magento setup:upgrade
    ```
 
-#### How to configure Discount label
-Go to section ``Stores -> Configuration -> Bperevyazko -> Product labels -> General``
-1. Enable Discount Label = Yes
-2. Mask for discount - by default `-{D}%`, where `{D}` as discount value. You can change it.
-3. Discount Label position - position at the product image area. By default `Top Left`. 
-   Available options:  
-   * top left, 
-   * top right, 
-   * bottom left, 
-   * bottom right
-4. Background Color -  the color for discount area
-
+#### How to configure
+[Configuration]: https://github.com/boris1988/module-product-labels/wiki/Settings
 
 ## Contacts
  - LinkedIn: www.linkedin.com/in/boris-pereviazko
