@@ -20,8 +20,8 @@
    bin/magento setup:upgrade
    ```
 
-#### How to configure
-[Configuration]: https://github.com/boris1988/module-product-labels/wiki/Settings
+#### How to configure [Link]
+[Link]: https://github.com/boris1988/module-product-labels/wiki/Settings
 
 ## Contacts
  - LinkedIn: www.linkedin.com/in/boris-pereviazko
