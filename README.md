@@ -5,6 +5,7 @@
 - output product attributes at the image area  for product page, product listing page, widgets, related/cross-sel/upsell products
 
 ### Features
+ - supported product types: simple, configurable, bundle
  - label position can be configured from admin configuration page
  - background for labels can be configured from admin configuration page
  - discount mask can be configured from admin configuration page
@@ -22,6 +23,15 @@
 
 #### How to configure [Link]
 [Link]: https://github.com/boris1988/module-product-labels/wiki/Settings
+
+### Result
+<a href="images/redult1.png"><img src="images/redult1.png" width="300"></a>
+<br>
+<a href="images/result2.png"><img src="images/result2.png" width="300"></a>
+<br>
+<a href="images/result3.png"><img src="images/result3.png" width="300"></a>
+<br>
+<a href="images/result4.png"><img src="images/result4.png" width="300"></a>
 
 ## Contacts
  - LinkedIn: www.linkedin.com/in/boris-pereviazko
