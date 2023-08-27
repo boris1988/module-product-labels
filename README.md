@@ -25,14 +25,12 @@
 [Link]: https://github.com/boris1988/module-product-labels/wiki/Settings
 
 ### Result
-<a href="images/redult1.png"><img src="images/redult1.png" width="300"></a>
+<a href="assets/result1.png"><img src="assets/result1.png" target="_blank" width="300"></a>
 <br>
-<a href="images/result2.png"><img src="images/result2.png" width="300"></a>
+<a href="assets/result2.png"><img src="assets/result2.png" target="_blank" width="300"></a>
 <br>
-<a href="images/result3.png"><img src="images/result3.png" width="300"></a>
+<a href="assets/result3.png"><img src="assets/result3.png" target="_blank" width="300"></a>
 <br>
-<a href="images/result4.png"><img src="images/result4.png" width="300"></a>
-
 ## Contacts
  - LinkedIn: www.linkedin.com/in/boris-pereviazko
  - Email: borisperevyazko@gmail.com
