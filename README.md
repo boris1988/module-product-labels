@@ -31,6 +31,7 @@
 <br>
 <a target="_blank" href="https://github.com/boris1988/module-product-labels/blob/7619ad2e339926e7517f8af44cfba931c442ec66/assests/result3.png"><img src="https://github.com/boris1988/module-product-labels/blob/7619ad2e339926e7517f8af44cfba931c442ec66/assests/result3.png" width="300"></a>
 <br>
+
 ## Contacts
  - LinkedIn: www.linkedin.com/in/boris-pereviazko
  - Email: borisperevyazko@gmail.com
