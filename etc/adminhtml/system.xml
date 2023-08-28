@@ -23,7 +23,7 @@
                     </depends>
                 </field>
                 <field id="position" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Discount Label posiiton</label>
+                    <label>Discount Label position</label>
                     <source_model>BPerevyazko\ProductLabel\Model\System\Config\Source\Position</source_model>
                     <depends>
                         <field id="discount_enabled">1</field>
