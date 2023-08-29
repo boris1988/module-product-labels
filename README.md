@@ -10,6 +10,9 @@
  - background for labels can be configured from admin configuration page
  - discount mask can be configured from admin configuration page
 
+### Requirements
+ - Extension was tested for Magento from ver. 2.3
+
 ### Installation
 1. ```sh
    composer require bperevyazko/module-product-label
